@@ -8,6 +8,7 @@ const InputBox = (props) => {
  <TextInput
     placeholder= {props?.placeholder??null}
     style={styles.InputBox}
+    
     />
     
   )

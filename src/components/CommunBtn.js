@@ -4,7 +4,8 @@ import React from 'react'
 const CommunBtn = (props) => {
     return (
         <TouchableOpacity
-            style={{...styles.button, ...props?.style }}>
+            style={{...styles.button, ...props?.style }}
+            onPress={props?.onPress}>
             <Text style={{...styles.buttonText,...props?.textstyle} }>{props?.title}</Text>
         </TouchableOpacity>
     )

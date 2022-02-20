@@ -1,12 +1,11 @@
-import { SafeAreaView, StyleSheet, Text, View, Dimensions, ScrollView, FlatList, TouchableOpacity } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View, Dimensions, ScrollView, FlatList, TouchableOpacity, ImageBackground } from 'react-native'
 import React from 'react'
 import Colors from '../../../assets/colors/Colors';
 import Slide from '../../components/Slide';
 import mydata from '../../data/Data';
 import Footer from '../../components/Footer';
-const temp = [
-  "mukesh", "buwade", "buwade"
-]
+import background from "../../images/background.png"
+
 const { width, height } = Dimensions.get("window")
 
 const Onboarding = (props) => {
@@ -44,45 +43,40 @@ const Onboarding = (props) => {
   return (
     <SafeAreaView style={styles.body}>
       {/* background  */}
-      <View style={{ flex: 1, position: "absolute", top: 0, bottom: 0, left: 0, right: 0 }}>
-        <View style={styles.top}></View>
-        <View style={styles.bottom}>
-          <View style={styles.bottomFront}>
-            <View style={{ flexDirection: "row", justifyContent: "center", marginTop: 10 }}>
-              {
-                mydata.map((item, index) => {
-                  return (
-                    <View key={index} style={{ ...styles.indicator, width: currentSlideIndex == index ? 20 : 7, }}>
-                    </View>
-                  )
-                })
-              }
-            </View>
+      <ImageBackground source={background} resizeMode="cover" style={styles.background}>
+       
+          <View style={{...styles.indicatorContainer, flexDirection: "row", justifyContent: "center", marginTop: 10 }}>
+            {
+              mydata.map((item, index) => {
+                return (
+                  <View key={index} style={{ ...styles.indicator, width: currentSlideIndex == index ? 20 : 7, }}>
+                  </View>
+                )
+              })
+            }
 
           </View>
-        </View>
-      </View>
-
-      {/* content  */}
-      <FlatList
-        ref={ref}
-        data={mydata}
-        renderItem={Slide}
-        keyExtractor={(item) => item.id}
-        horizontal
-        pagingEnabled
-        onMomentumScrollEnd={updateCurruntSlideIndex}
-        showsVerticalScrollIndicator={false}
-      />
-
-      <View style={{ position: "absolute", bottom: 0, flexDirection: "row", justifyContent: "space-between", width, padding: 30 }}>
-        <TouchableOpacity onPress={goPreviousSlide} style={styles.button}>
-          <Text style={styles.buttonText}>{currentSlideIndex !== 0 ? "Previous" : "skip"}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={ goNextSlide} style={styles.button}>
-          <Text style={styles.buttonText}>{currentSlideIndex !== 2 ? "next" : "done"}</Text>
-        </TouchableOpacity>
-      </View>
+          {/* content  */}
+          <FlatList
+            ref={ref}
+            data={mydata}
+            renderItem={Slide}
+            keyExtractor={(item) => item.id}
+            horizontal
+            pagingEnabled
+            onMomentumScrollEnd={updateCurruntSlideIndex}
+            showsHorizontalScrollIndicator={false}
+          />
+          <View style={{ position: "absolute", bottom: 0, flexDirection: "row", justifyContent: "space-between", width, padding: 30 }}>
+            <TouchableOpacity onPress={goPreviousSlide} style={styles.button}>
+              <Text style={styles.buttonText}>{currentSlideIndex !== 0 ? "Previous" : "skip"}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={goNextSlide} style={styles.button}>
+              <Text style={styles.buttonText}>{currentSlideIndex !== 2 ? "next" : "done"}</Text>
+            </TouchableOpacity>
+          </View>
+        
+      </ImageBackground>
     </SafeAreaView>
   )
 }
@@ -94,33 +88,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.white
   },
-  top: {
-    backgroundColor: Colors.primary,
-    width: width,
-    height: height * 0.65,
-    borderBottomRightRadius: 70,
-    zIndex: -1,
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0
+  background: {
+    flex: 1
   },
-  bottom: {
-    backgroundColor: Colors.primary,
+  indicatorContainer: {
     width: width,
     height: height * 0.35,
-    zIndex: -1,
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0
-  },
-  bottomFront: {
-    backgroundColor: Colors.white,
-    width: width,
-    height: height * 0.35,
-    zIndex: 0,
-    borderTopLeftRadius: 70,
     position: "absolute",
     bottom: 0,
     left: 0,
@@ -130,7 +103,7 @@ const styles = StyleSheet.create({
     margin: 2,
     borderRadius: 10,
     height: 3,
-    backgroundColor: Colors.primary
+    backgroundColor: Colors.black
   },
   button: { backgroundColor: Colors.primary, paddingHorizontal: 20, paddingVertical: 5, borderRadius: 50, },
   buttonText: { fontSize: 15, color: Colors.white, fontFamily: "Poppins-Medium" }

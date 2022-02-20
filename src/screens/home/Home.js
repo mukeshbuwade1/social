@@ -1,11 +1,11 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text,SafeAreaView, View } from 'react-native'
 import React from 'react'
 
 const Home = (props) => {
   return (
-    <View>
-      <Text onPress={()=>props.navigation.navigate("Login")}>Home</Text>
-    </View>
+    <SafeAreaView style={{flex:1}}>
+
+    </SafeAreaView>
   )
 }
 

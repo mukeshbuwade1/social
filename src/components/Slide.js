@@ -3,7 +3,7 @@ import React from 'react';
 import Colors from '../../assets/colors/Colors'
 
 const { width, height } = Dimensions.get("window")
-
+// console.log(`width: ${width}, height: ${height} `)
 const Slide = ({item}) => {
   return (
     <View>
@@ -27,15 +27,17 @@ const styles = StyleSheet.create({
   },
   top: {
     width: width,
-    height: height * 0.65,
+    height: height * 0.6,
     justifyContent: "center",
     alignItems: "center"
   },
   bottom: {
     width: width,
-    height: height * 0.35,
+    height: height*0.35 ,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    
+    
   },
   font: {
     fontSize: 25,
