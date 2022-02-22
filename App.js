@@ -3,6 +3,8 @@ import React from 'react';
 import Rootnavigator from './src/navigator/Rootnavigator';
 
 const App = () => {
+
+  
   return (
       <Rootnavigator/>
   )
