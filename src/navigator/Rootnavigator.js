@@ -45,7 +45,7 @@ const LoginStack = () => {
 const StackContainer = () => {
     return (
         <Stack.Navigator
-            initialRouteName='LoginStack'
+            initialRouteName='HomeStack'
             screenOptions={{
                 headerShown: false
             }}>

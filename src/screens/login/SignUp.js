@@ -11,9 +11,7 @@ const SignUp = (props) => {
   const [email, setEmail] = React.useState("")  
   const [password, setPassword] = React.useState("")
     const [valid,setValid] = React.useState(true)
-    const [error,setError] = React.useState("")
-    // const password="123456";
-    // const email="mukeshbuwade@gmail.com";
+    const [error,setError] = React.useState("")    
     const __isValidEmail =(val)=>{
         let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
         return reg.test(val)
