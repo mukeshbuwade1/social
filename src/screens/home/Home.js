@@ -6,13 +6,17 @@ import user1 from "../../images/user1.png"
 const Home = (props) => {
   return (
     <CommonHeader
+    leftImage={"https://statinfer.com/wp-content/uploads/dummy-user.png"}
       leftIconName={"chevron-back"}
       leftIconColor={"#E94057"}
-      leftIconSize={24}
+      leftIconSize={28}
       heading={"Discover"}
-      rightIconName={"options"}
+      rightIconName={"ios-chatbubbles"}
       rightIconColor={"#E94057"}
-      rightIconSize={20}
+      rightIconSize={28}
+      centerIcon={"tinder"}
+      centerIconColor={"#E94057"}
+      centerIconSize={35}
     >
       <View style={{ flex: 1, marginTop:5, }}>
         <Image source={discoverbg} style={styles.discoverbg} />

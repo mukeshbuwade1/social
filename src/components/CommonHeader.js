@@ -1,6 +1,8 @@
-import { SafeAreaView, StyleSheet, Dimensions, Text, View } from 'react-native'
+import { SafeAreaView, StyleSheet, Dimensions, Text, View, Image } from 'react-native'
 import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import Fontisto from 'react-native-vector-icons/Fontisto';
+
 // leftIconName={"chevron-back"}
 // leftIconColor={"#E94057"}
 // leftIconSize={24}
@@ -16,25 +18,39 @@ const CommonHeader = (props) => {
         <View style={styles.headerContainer}>
           {/* left  */}
           <View style={styles.icon}>
-            <Ionicons
-              name={props?.leftIconName??null}
-              size={props?.leftIconSize??24}
-              color={props?.leftIconColor??null} />
+            {
+              props?.leftImage ? <Image source={{uri:props.leftImage}} style={styles.image} /> : (
+                <Ionicons
+                  name={props?.leftIconName ?? null}
+                  size={props?.leftIconSize ?? 24}
+                  color={props?.leftIconColor ?? null} />
+              )
+            }
+
           </View>
 
           {/* center */}
-          <View>
+          {
+            props.centerIcon?(
+              <Fontisto
+                  name={props?.centerIcon ?? null}
+                  size={props?.centerIconSize ?? 24}
+                  color={props?.centerIconColor ?? "#000"} />
+            ):(<View>
             <Text style={styles.text}>
               {props?.heading}
-            </Text>           
+            </Text>
           </View>
+            )
+            
+          }
 
           {/* right */}
           <View style={styles.icon}>
             <Ionicons
-              name={props?.rightIconName??null}
-              size={props?.rightIconSize??24}
-              color={props?.rightIconColor??null}
+              name={props?.rightIconName ?? null}
+              size={props?.rightIconSize ?? 24}
+              color={props?.rightIconColor ?? null}
             />
           </View>
         </View>
@@ -56,16 +72,23 @@ const styles = StyleSheet.create({
   headerContainer: {
     width: "100%",
     flexDirection: "row",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    // borderWidth:1,
+alignItems:"center"
+  },
+  image: {
+    width: 30,
+    height: 30,
+    borderRadius:50
   },
   icon: {
-    borderWidth: 1,
-    width: 50,
-    height: 50,
-    justifyContent: "center",
-    alignItems: "center",
-    borderColor: "#E8E6EA",
-    borderRadius: 15
+    
+    // width: 50,
+    // height: 50,
+    // justifyContent: "center",
+    // alignItems: "center",
+    
+    // borderRadius: 15
   },
   text: {
     fontSize: 24,
